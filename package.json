@@ -1,0 +1,23 @@
+{
+  "name": "hapi-favicon",
+  "version": "0.0.1",
+  "description": "Return response for favicon.ico requests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/firstandthird/hapi-favicon.git"
+  },
+  "keywords": [
+    "hapi",
+    "favicon"
+  ],
+  "author": "Greg Allen <code@firstandthird.com> (http://firstandthird.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/firstandthird/hapi-favicon/issues"
+  },
+  "homepage": "https://github.com/firstandthird/hapi-favicon#readme"
+}
