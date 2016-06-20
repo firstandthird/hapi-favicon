@@ -1,3 +1,4 @@
+var fs = require('fs');
 exports.register = function(server, options, next) {
 
   server.route({
@@ -9,7 +10,10 @@ exports.register = function(server, options, next) {
       }
     },
     handler: function(request, reply) {
-      reply().code(200).type('image/x-icon');
+      if (!options.path) {
+        return reply().code(204).type('image/x-icon');
+      }
+      reply(null, fs.createReadStream(options.path)).code(200).type('image/x-icon');
     }
   });
 
