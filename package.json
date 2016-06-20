@@ -1,6 +1,6 @@
 {
   "name": "hapi-favicon",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Return response for favicon.ico requests",
   "main": "index.js",
   "scripts": {
