@@ -5,6 +5,7 @@ exports.register = function(server, options, next) {
     path: '/favicon.ico',
     method: 'get',
     config: {
+      auth: false,
       cache: {
         expiresIn: 1000*60*60*24*21
       }
