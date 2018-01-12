@@ -1,7 +1,6 @@
 var fs = require('fs');
 exports.register = function(server, options, next) {
-
-  server.route({
+  var route = {
     path: '/favicon.ico',
     method: 'get',
     config: {
@@ -16,7 +15,13 @@ exports.register = function(server, options, next) {
       }
       reply(null, fs.createReadStream(options.path)).code(200).type('image/x-icon');
     }
-  });
+  }
+
+  if (typeof options.auth !== 'undefined') {
+    route.config.auth = options.auth;
+  }
+
+  server.route(route);
 
   next();
 };
