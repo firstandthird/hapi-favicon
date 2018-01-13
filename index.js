@@ -1,5 +1,5 @@
 var fs = require('fs');
-exports.register = function(server, options, next) {
+const register = function(server, options) {
   var route = {
     path: '/favicon.ico',
     method: 'get',
@@ -9,11 +9,15 @@ exports.register = function(server, options, next) {
         expiresIn: 1000*60*60*24*21
       }
     },
-    handler: function(request, reply) {
+    handler: function(request, h) {
       if (!options.path) {
-        return reply().code(204).type('image/x-icon');
+        return h.response()
+        .code(204)
+        .type('image/x-icon');
       }
-      reply(null, fs.createReadStream(options.path)).code(200).type('image/x-icon');
+      return h.response(fs.createReadStream(options.path))
+      .code(200)
+      .type('image/x-icon');
     }
   }
 
@@ -23,10 +27,10 @@ exports.register = function(server, options, next) {
 
   server.route(route);
 
-  next();
 };
 
-exports.register.attributes = {
+exports.plugin = {
+  register,
+  once: true,
   pkg: require('./package.json')
 };
-
