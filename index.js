@@ -1,5 +1,11 @@
 var fs = require('fs');
+
+const defaults = {
+  appleTouch: true
+};
+
 const register = function(server, options) {
+  options = Object.assign({}, defaults, options);
   var route = {
     path: '/favicon.ico',
     method: 'get',
